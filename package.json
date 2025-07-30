@@ -1,32 +1,20 @@
 {
   "name": "noir_poc",
   "private": true,
-  "version": "0.0.0",
+  "version": "0.1.0",
   "type": "module",
+  "main": "dist/ts/index.js",
   "scripts": {
-    "dev": "vite",
-    "build": "tsc -b && vite build",
-    "lint": "eslint .",
-    "preview": "vite preview"
+    "build": "tsc",
+    "types": "tsc -p tsconfig.json --noEmit",
+    "start": "node dist/ts/index.js"
   },
   "dependencies": {
     "@aztec/bb.js": "^1.1.3",
-    "@noir-lang/noir_js": "1.0.0-beta.9",
-    "react": "^19.1.0",
-    "react-dom": "^19.1.0"
+    "@noir-lang/noir_js": "1.0.0-beta.9"
   },
   "devDependencies": {
-    "@eslint/js": "^9.30.1",
-    "@types/react": "^19.1.8",
-    "@types/react-dom": "^19.1.6",
-    "@vitejs/plugin-react": "^4.6.0",
-    "eslint": "^9.30.1",
-    "eslint-plugin-react-hooks": "^5.2.0",
-    "eslint-plugin-react-refresh": "^0.4.20",
-    "globals": "^16.3.0",
-    "typescript": "~5.8.3",
-    "typescript-eslint": "^8.35.1",
-    "vite": "^7.0.4",
-    "vite-plugin-node-polyfills": "^0.24.0"
+    "@types/node": "^24.1.0",
+    "typescript": "^5.8.3"
   }
 }
