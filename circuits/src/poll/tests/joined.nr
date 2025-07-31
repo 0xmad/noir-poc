@@ -8,7 +8,7 @@ fn test_poll_joined() {
     let voice_credits_balance = 100;
     let actual_state_tree_depth = 6;
     let state_root = 0x25166ece8315f6a3b9a3be418bd225dee9c85cb35608dcee64583dcd2898267e;
-    let path_elements = [
+    let siblings = [
         0x19ce4238de2f70198652072a6fc1d13e88dbb8338091878c892cfffd95b3b870,
         0x19f9a4410e14a1b1a3a7e9b03a55c518c712fb78fd34feadebc55749d2351ac8,
         0x28f1a6f8e2afd3b4bdb2354b1878c03fbc0689f59f2506ec9c1a07f3ae43eb8e,
@@ -28,6 +28,6 @@ fn test_poll_joined() {
         state_root,
         actual_state_tree_depth,
         indices,
-        path_elements,
+        siblings,
     );
 }
