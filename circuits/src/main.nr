@@ -1,5 +1,5 @@
 use poll::joined::poll_joined;
-use utils::{keypair::PrivateKey, bits::num_to_bits};
+use utils::{bits::num_to_bits, keypair::PrivateKey};
 
 mod poll;
 mod utils;
