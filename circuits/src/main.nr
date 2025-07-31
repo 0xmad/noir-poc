@@ -1,5 +1,5 @@
 use poll::joined::poll_joined;
-use utils::keypair::PrivateKey;
+use utils::{keypair::PrivateKey, bits::num_to_bits};
 
 mod poll;
 mod utils;
@@ -19,7 +19,7 @@ fn main(
         voice_credits_balance,
         state_root,
         actual_state_tree_depth,
-        index.to_le_bits(),
+        num_to_bits(index),
         siblings,
     );
 }
