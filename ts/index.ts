@@ -11,22 +11,50 @@ export const run = async (args: InputMap) => {
   const noir = new Noir(circuit as CompiledCircuit);
   const backend = new UltraHonkBackend(circuit.bytecode);
 
-  console.log("Generating witness... ⏳");
-  const { witness } = await noir.execute(args);
-  console.log("Generated witness... ✅");
+  const { witness } = await withPerformanceLog(
+    "Witness generation",
+    async () => {
+      console.log("Generating witness... ⏳");
+      const { witness } = await noir.execute(args);
+      console.log("Generated witness... ✅");
 
-  console.log("Generating proof... ⏳");
-  const data = await backend.generateProof(witness);
-  console.log("Generated proof... ✅");
+      return { witness };
+    }
+  );
 
-  console.log(JSON.stringify(data.proof, undefined, 2));
+  const data = await withPerformanceLog("Proof generation", async () => {
+    console.log("Generating proof... ⏳");
+    const result = await backend.generateProof(witness);
+    console.log("Generated proof... ✅");
 
-  const isValid = await backend.verifyProof(data);
+    return result;
+  });
+
+  // console.log(JSON.stringify(data.proof, undefined, 2));
+
+  const isValid = await withPerformanceLog("Verification", async () => {
+    return await backend.verifyProof(data);
+  });
 
   console.log(
     "Proof verification result:",
     isValid ? "✅ Valid" : "❌ Invalid"
   );
+};
+
+const withPerformanceLog = async <T>(
+  operation: string,
+  call: () => Promise<T>
+): Promise<T> => {
+  const start = performance.now();
+
+  const result = await call();
+
+  const end = performance.now();
+
+  console.log(`${operation}: ${(end - start).toFixed(2)} ms`);
+
+  return result;
 };
 
 (async () => {
