@@ -7,7 +7,7 @@ mod utils;
 fn main(
     private_key: Field,
     voice_credits_balance: Field,
-    state_root: Field,
+    state_root: pub Field,
     actual_state_tree_depth: u32,
     index: Field,
     siblings: [Field; 10],

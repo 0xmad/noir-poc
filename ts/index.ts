@@ -1,4 +1,4 @@
-import circuit from "../circuits/target/circuits.json" assert { type: "json" };
+import circuit from "../circuits/target/circuits.json";
 
 import type { CompiledCircuit, InputMap } from "@noir-lang/noir_js";
 
