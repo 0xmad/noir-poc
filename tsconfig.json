@@ -1,19 +1,20 @@
 {
   "compilerOptions": {
-    "target": "esnext",
-    "module": "ESNext",
+    "target": "es2020",
+    "module": "commonjs",
     "moduleResolution": "node",
-    "lib": ["ESNext", "DOM"],
+    "lib": ["DOM"],
     "strict": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
     "resolveJsonModule": true,
     "allowJs": true,
     "isolatedModules": true,
+    "forceConsistentCasingInFileNames": true,
     "outDir": "./dist",
     "baseUrl": "."
   },
   "exclude": ["node_modules"],
-  "include": ["./ts", "./circuits/target"],
-  "files": ["./circuits/target/circuits.json"]
+  "include": ["./ts", "./tests", "./typechain-types", "./circuits/target"],
+  "files": ["./circuits/target/circuits.json", "hardhat.config.ts"]
 }
